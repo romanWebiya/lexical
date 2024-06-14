@@ -3,10 +3,6 @@
   "description": "Lexical is an extensible text editor framework that provides excellent reliability, accessibility and performance.",
   "version": "0.16.0",
   "license": "MIT",
-  "private": true,
-  "workspaces": [
-    "packages/*"
-  ],
   "engines": {
     "npm": ">=8.2.3",
     "yarn": ">=1"
@@ -86,10 +82,10 @@
     "debug-test-e2e-plain-legacy-firefox": "cross-env E2E_BROWSER=firefox E2E_EDITOR_MODE=plain-text E2E_EVENTS_MODE=legacy-events playwright test --debug --project=\"firefox\"",
     "debug-test-e2e-plain-legacy-webkit": "cross-env E2E_BROWSER=webkit E2E_EDITOR_MODE=plain-text E2E_EVENTS_MODE=legacy-events playwright test --debug --project=\"webkit\"",
     "debug-test-unit": "node --inspect-brk node_modules/.bin/jest --runInBand --collectCoverage=false",
-    "lint": "eslint ./",
-    "prettier": "prettier --list-different .",
+    "lint": "eslint packages",
+    "prettier": "prettier --list-different packages",
     "ci-check": "npm-run-all --parallel tsc tsc-extension flow prettier lint",
-    "prettier:fix": "prettier --write .",
+    "prettier:fix": "prettier --write packages",
     "prepare-ci": "npm run build-playground-dev",
     "prepare-ci-prod": "npm run build-playground-prod",
     "prepare-release": "npm run build-release && node ./scripts/npm/prepare-release.js && node ./scripts/validate-tsc-types.js",
@@ -186,8 +182,5 @@
     "typedoc": "^0.25.12",
     "typescript": "^5.4.5",
     "vite": "^5.2.11"
-  },
-  "dependencies": {
-    "yjs": "^13.5.42"
   }
 }
